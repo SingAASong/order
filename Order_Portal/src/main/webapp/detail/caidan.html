@@ -22,7 +22,34 @@
         }
         return theRequest;
     };
-
+    //查询相应菜系菜品
+	function findById(aid) {
+        $.get("../food/findFood.do", { id:aid},
+            function(data){
+            	var strs="";
+                var JData = JSON.parse(data);
+                $.each(JData, function(i, n){
+                    strs+='<li>'+'<dl>'+'<dt>'+'<a href=caixiangxi.html?id='+n.id+'>'+
+						'<img width="214px" height="145px" src="style/images/baiqieji.jpg" />'+'</a>'+'</dt>'
+						+'<dd>'+'<a href=caixiangxi.html?id='+n.id+'>'+n.foodName+'</a>'+'</dd>'
+						+'<dd class="f2">'+'<a href=caixiangxi.html?id='+n.id+'>'+n.price+'</a>'+'</dd>'
+						+'</dl >'+'</li>'
+                });
+                $("#topul").html(strs);
+            });
+    }
+    jQuery(function($) {
+        //异步加载菜系名称
+        $.get("../order/findAll.do",
+            function(data){
+                var strs="";
+                var JData = JSON.parse(data);
+                $.each(JData, function(i, n){
+                   strs+='<li>'+'<a href="#" onclick=findById('+n.id+')'+'>'+n.cookname+'</a>'+'</li>'
+                });
+                $("#dish").html(strs);
+            });
+    });
 </script>
 </head>
 <body style="text-align: center">
@@ -30,23 +57,9 @@
 		<div id="menu">
 			<!-- 显示菜品的div -->
 			<div id="top">
-				<ul>
+				<ul id="topul">
 					<!-- 循环列出餐品 -->
-						<li>
-							<dl>
-								<dt>
-									<a href="caixiangxi.html">
-										<img width="214px" height="145px" src="style/images/baiqieji.jpg" />
-									</a>
-								</dt>
-								<dd class="f1">
-									<a href="caixiangxi.html">白切鸡</a>
-								</dd>
-								<dd class="f2">
-									<a href="caixiangxi.html">&yen;68.0</a>
-								</dd>
-							</dl>
-						</li>
+
 				</ul>
 			</div>
 			
@@ -56,8 +69,7 @@
 							style="float:left; line-height:53PX; margin-left:-50px; font-weight:bold; ">
 							<span style="font-weight:bold">&lt;&lt;</span>
 						</span>
-					
-				
+
 				<div id="btn">
 					<ul>
 						<!-- 参看 百度, 谷歌是 左 5 右 4 -->
@@ -88,26 +100,9 @@
 					</li>
 				</ul>
 			</div>
-
+			<!--菜系列表-->
 			<div id="dish_2">
-				<ul>
-					
-						<li>
-							<a href="caidan.html">粤菜</a>
-						</li>
-					
-						<li>
-							<a href="chuancai.html">川菜</a>
-						</li>
-					
-						<li>
-							<a href="chuancai.html">湘菜</a>
-						</li>
-					
-						<li>
-							<a href="chuancai.html">东北菜</a>
-						</li>
-					
+				<ul id="dish">
 				</ul>
 			</div>
 			<div id="dish_3">
