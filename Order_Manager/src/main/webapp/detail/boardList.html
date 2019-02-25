@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+<head>
+<title>无线点餐平台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="style/js/myPagination.js"></script>
+<script type="text/javascript" src="style/js/jquery.js"></script>
+<script type="text/javascript" src="style/js/page_common.js"></script>
+	<script type="text/javascript" src="style/js/boardList.js"></script>
+<link href="style/css/common_style_blue.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="style/css/index_1.css" />
+<link rel="stylesheet" href="style/css/myPagination.css">
+
+</head>
+
+<body>
+<!-- 页面标题 -->
+<div id="TitleArea">
+	<div id="TitleArea_Head"></div>
+	<div id="TitleArea_Title">
+		<div id="TitleArea_Title_Content">
+			<img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> 餐桌列表
+		</div>
+    </div>
+	<div id="TitleArea_End"></div>
+</div>
+
+
+<!-- 过滤条件 -->
+<div id="QueryArea">
+		<!-- 当前页码 -->
+		<input type="hidden" id="currentPage" name="pages" value="">
+		<!-- 每页显示条数 -->
+		<input type="hidden" id="PageSize" name="rows" value="">
+		<!-- 总条数 -->
+		<input type="hidden" id="total" name="total1" value="">
+		<input type="text" id="word" name="keyword" placeholder="请输入餐桌名称" value="">
+		<input  type="button" value="搜索" onclick="window.onload()" >
+</div>
+
+
+<!-- 主内容区域（数据列表或表单显示） -->
+<div id="MainArea">
+    <table class="MainArea_Content" cellspacing="0" cellpadding="0">
+        <!-- 表头-->
+        <thead align="center">
+            <tr valign="middle" id="TableTitle">
+				<td >编号</td>
+				<td >桌名</td>
+				<td >状态</td>
+				<td >预定时间</td>
+				<td >操作</td>
+			</tr>
+		</thead>	
+		<!--显示数据列表 -->
+        <tbody id="TableData" align="center">
+			<!--<%&#45;&#45; <tr class="TableDetail1">
+				<td align="center">${order.id}&nbsp;</td>
+				<td align="center">${order.tableName}&nbsp;</td>
+				<td align="center">${order.status=='1'? '预定':'空闲'}</td>
+				<td align="center">${order.creatTime }</td>
+				<td>
+					<a href="#" class="FunctionButton" onclick="returnTa(${order.id},${order.status});">退桌</a>				
+					<a href="#" onClick="deleteTa(${order.id})"class="FunctionButton">删除</a>				
+				</td>
+			</tr> &#45;&#45;%>-->
+        </tbody>
+    </table>
+	<div id="pagination" class="pagination" align="center"></div>
+
+   <!-- 其他功能超链接 -->
+	<div id="TableTail" align="center">
+		<div class="FunctionButton"><a href="saveBoard.html">添加</a></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+<head>
+<title>无线点餐平台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="style/js/myPagination.js"></script>
+<script type="text/javascript" src="style/js/jquery.js"></script>
+<script type="text/javascript" src="style/js/page_common.js"></script>
+<link href="style/css/common_style_blue.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="style/css/index_1.css" />
+<link rel="stylesheet" href="style/css/myPagination.css">
+</head>
+<body>
+	<!-- 页面标题 -->
+	<div id="TitleArea">
+		<div id="TitleArea_Head"></div>
+		<div id="TitleArea_Title">
+			<div id="TitleArea_Title_Content">
+				<img border="0" width="13" height="13"
+					src="style/images/title_arrow.gif" /> 菜系列表
+			</div>
+		</div>
+		<div id="TitleArea_End"></div>
+	</div>
+	<!-- 过滤条件 -->
+	<div id="QueryArea">
+		<form >
+			<input type="hidden" name="method" value="search">
+			<input type="text" id="word" name="keyword" placeholder="请输入菜系名称" value="">
+			<input type="button" value="搜索" onclick="window.onload()">
+		</form>
+	</div>
+
+	<!-- 主内容区域（数据列表或表单显示） -->
+	<div id="MainArea" >
+		<table class="MainArea_Content"  cellspacing="0" cellpadding="0">
+			<!-- 表头-->
+			<thead align='center'>
+				<tr  valign="middle" id="TableTitle">
+					<td>菜系编号</td>
+					<td>菜系名称</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<!--显示数据列表 -->
+			<tbody id="TableData" align='center'>
+			</tbody>
+		</table>
+		<div id="pagination" class="pagination" align="center"></div>
+		<!-- 其他功能超链接 -->
+		<div id="TableTail" align="center">
+			<div class="FunctionButton">
+				<a href="saveCuisine.html">添加</a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="style/js/cuisineList.js"></script>
+</body>
+</html>

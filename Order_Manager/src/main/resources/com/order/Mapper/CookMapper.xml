@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.order.Mapper.CookMapper">
+<resultMap type="com.order.pojo.Cook" id="BaseResultMap">
+<id column="id" property="id" jdbcType="BIGINT"/>
+<result column="cookName" property="cookName" jdbcType="VARCHAR"/>
+</resultMap>
+<insert id="add">
+	insert into cook (cookName) values (#{cookName})
+</insert>
+<select id="selectAll" resultMap="BaseResultMap">
+ select id,cookName from cook
+</select>
+<select id="findById" parameterType="Long" resultType="com.order.pojo.Cook">
+select id,cookName from cook where id=#{id}
+</select>
+<select id="selectLike" parameterType="String" resultMap="BaseResultMap">
+<bind name="pattern" value="'%'+keyword+'%'"/>
+	select id,cookName from cook where cookname like #{pattern}
+</select>
+<update id="update" parameterType="com.order.pojo.Cook">
+update cook set cookName=#{cookName} where id=#{id}
+</update>
+<delete id="delete" parameterType="int">
+	delete from cook where id=#{id}
+</delete>
+</mapper>
